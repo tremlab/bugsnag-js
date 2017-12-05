@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 
 const browserify = require('browserify')
+const minTx = require('./lib/min-transform')
 
 browserify('browser/index.js', { debug: true, standalone: 'bugsnag' })
   .transform('browserify-versionify')
-  .plugin('browser-pack-flat/plugin')
   .transform('babelify', { global: true })
+  // .transform(minTx, { global: true })
+  .plugin('browser-pack-flat/plugin')
   .bundle()
   .pipe(process.stdout)
