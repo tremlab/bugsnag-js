@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "An example of how you can use Bugsnag on a js project with sourcemaps",
   "scripts": {
-    "build": "uglifyjs app.js --compress --mangle --source-map \"includeSources=true,url='app.min.js.map'\" -o app.min.js",
+    "build": "uglifyjs app.js --compress --mangle --source-map \"includeSources=true,url='app.min.js.map'\" -o app.min.js && uglifyjs wrongmap.js --compress --mangle --source-map \"includeSources=true,url='wrongmap.min.js.map'\" -o wrongmap.min.js && uglifyjs randomap.js --compress --mangle --source-map \"includeSources=true,url='randomap.min.js.map'\" -o randomap.min.js",
     "start": "npm run build && serve ."
   },
   "author": "Bugsnag Inc.",

@@ -1,7 +1,9 @@
 // www.bugsnag.com
 // https://github.com/bugsnag/bugsnag-js/tree/master/examples/js
 //
-// this example app demonstrates some of the basic syntax to get Bugsnag error reporting configured in your Javascript code, with source map support.
+// this example app demonstrates how things can go wrong with source maps in Bugsnag.
+//  The erros in this file will have the correct map and shoudl display correctly,
+//  but others will not fare so well :)
 // ***********************************************************
 
 document.getElementById('jsHandled').addEventListener('click', sendHandled)
