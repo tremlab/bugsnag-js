@@ -33,7 +33,7 @@ function fourthRing() {
       metaData: {
           mapping: {
             filename: "wrongmap.min.js",
-            uploaded_map: "randowmap.min.js.map"
+            uploaded_map: "randomap.min.js.map"
           }
           }
       })

@@ -8,6 +8,10 @@
 
 document.getElementById('jsHandled').addEventListener('click', sendHandled)
 document.getElementById('jsUnhandled').addEventListener('click', sendUnhandled)
+document.getElementById('jsPromise').addEventListener('click', keptPromises)
+document.getElementById('jsUnPromise').addEventListener('click', brokenPromises)
+document.getElementById('jsUnPromiseBad').addEventListener('click', brokenPromisesBad)
+
 
 // Note that Bugsnag was loaded with a CDN link in index.html, but it will not be active until initialized, either in the html or here in the JavaScript.
 
@@ -84,6 +88,30 @@ function sendUnhandled () {
   var num = 1
   // deliberate Type Error
   num.toUpperCase()
+}
+
+function keptPromises () {
+  var promise1 = new Promise(function(resolve, reject) {
+    throw 'handled promise rejection';
+  });
+
+  promise1.catch(function(error) {
+    bugsnagClient.notify(error);
+  });
+}
+
+function brokenPromisesBad () {
+  // in Chrome, Bugsnag will see and report this rejection response.  But since it is a string, not error object, the formatting will be less than ideal.
+  var promise1 = new Promise(function(resolve, reject) {
+    throw 'Liar!!!!!!!!';
+  });
+}
+
+function brokenPromises () {
+  // in Chrome, Bugsnag will see and report this rejection response.
+  var promise1 = new Promise(function(resolve, reject) {
+    throw new Error('Liar!!!!!!!!');
+  });
 }
 
 // below is the simplest notification syntax, akin to logging.
